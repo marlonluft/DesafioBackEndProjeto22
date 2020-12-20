@@ -69,5 +69,27 @@ namespace OpenWeather.Library.Tests.Model
             // Act & Assert
             Assert.Throws<OpenWeatherException>(() => temperatura.Validar());
         }
+
+        [Fact(DisplayName = "Preencher Temperatura menor que temperatura mínima")]
+        [Trait("Model", "TemperaturaModel")]
+        public void PreencherTemperaturaMenorQueTemperaturaMinima_DeveRetornarException()
+        {
+            // Arrange
+            var temperatura = new TemperaturaModel("Cidade", _descricoes, 0, 0, 5, 10, 30);
+
+            // Act & Assert
+            Assert.Throws<OpenWeatherException>(() => temperatura.Validar());
+        }
+
+        [Fact(DisplayName = "Preencher Temperatura maior que temperatura máxima")]
+        [Trait("Model", "TemperaturaModel")]
+        public void PreencherTemperaturaMaiorQueTemperaturaMaxima_DeveRetornarException()
+        {
+            // Arrange
+            var temperatura = new TemperaturaModel("Cidade", _descricoes, 0, 0, 35, 10, 30);
+
+            // Act & Assert
+            Assert.Throws<OpenWeatherException>(() => temperatura.Validar());
+        }
     }
 }
