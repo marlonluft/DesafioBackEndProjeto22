@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeather.API", "OpenWeatherAPI\OpenWeather.API.csproj", "{3F116493-4688-4591-84AF-2C5A7CB7A1AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeather.API", "src\OpenWeather.API\OpenWeather.API.csproj", "{3F116493-4688-4591-84AF-2C5A7CB7A1AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeather.Library", "OpenWeather.Library\OpenWeather.Library.csproj", "{1BE511F6-B575-44EB-B054-715F4BFE5804}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeather.Library", "src\OpenWeather.Library\OpenWeather.Library.csproj", "{1BE511F6-B575-44EB-B054-715F4BFE5804}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{601101D3-5A89-405D-8F5D-7D2404D591D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{56A302B0-9300-4D8F-AA18-2424E22A758B}"
 EndProject
@@ -34,6 +36,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{3F116493-4688-4591-84AF-2C5A7CB7A1AC} = {601101D3-5A89-405D-8F5D-7D2404D591D5}
+		{1BE511F6-B575-44EB-B054-715F4BFE5804} = {601101D3-5A89-405D-8F5D-7D2404D591D5}
 		{C22B8B56-9C73-4341-A4DC-B96C49C19E80} = {56A302B0-9300-4D8F-AA18-2424E22A758B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
