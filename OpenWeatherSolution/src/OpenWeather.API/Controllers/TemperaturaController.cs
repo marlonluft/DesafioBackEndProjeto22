@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OpenWeather.API.ViewModel;
+using OpenWeather.Library.Services;
 using System;
 using System.Collections.Generic;
 
@@ -14,10 +15,13 @@ namespace OpenWeatherAPI.Controllers
     public class TemperaturaController : ControllerBase
     {
         private readonly ILogger<TemperaturaController> _logger;
+        private readonly ITemperaturaService _temperaturaService;
+        
 
-        public TemperaturaController(ILogger<TemperaturaController> logger)
+        public TemperaturaController(ILogger<TemperaturaController> logger, ITemperaturaService temperaturaService)
         {
             _logger = logger;
+            _temperaturaService = temperaturaService;
         }
 
         /// <summary>
@@ -44,7 +48,9 @@ namespace OpenWeatherAPI.Controllers
                 return BadRequest("A data de inicio da pesquisa é maior que a data de fim");
             }
 
-            return Ok();
+            var listaTemperatura = _temperaturaService.Listar(cidade, dataInicio, dataFim);
+
+            return Ok(listaTemperatura);
         }
     }
 }
