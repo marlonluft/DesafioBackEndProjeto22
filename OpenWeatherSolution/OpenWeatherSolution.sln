@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeather.API", "OpenWeat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeather.Library", "OpenWeather.Library\OpenWeather.Library.csproj", "{1BE511F6-B575-44EB-B054-715F4BFE5804}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{56A302B0-9300-4D8F-AA18-2424E22A758B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeather.Library.Tests", "tests\OpenWeather.Library.Tests\OpenWeather.Library.Tests.csproj", "{C22B8B56-9C73-4341-A4DC-B96C49C19E80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{1BE511F6-B575-44EB-B054-715F4BFE5804}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BE511F6-B575-44EB-B054-715F4BFE5804}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BE511F6-B575-44EB-B054-715F4BFE5804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C22B8B56-9C73-4341-A4DC-B96C49C19E80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C22B8B56-9C73-4341-A4DC-B96C49C19E80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C22B8B56-9C73-4341-A4DC-B96C49C19E80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C22B8B56-9C73-4341-A4DC-B96C49C19E80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C22B8B56-9C73-4341-A4DC-B96C49C19E80} = {56A302B0-9300-4D8F-AA18-2424E22A758B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8169018-AAC4-42AA-BAF8-AB0A1FA723D3}
