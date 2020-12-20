@@ -5,7 +5,7 @@ namespace OpenWeather.Library.Model
 {
     public class TemperaturaModel
     {
-        public TemperaturaModel(string cidade, string[] descricoes, float sensacaoTermica, int humidade, float temperatua, float temperatuaMaxima, float temperatuaMinima)
+        public TemperaturaModel(string cidade, string[] descricoes, float sensacaoTermica, int humidade, float temperatua, float temperatuaMinima, float temperatuaMaxima)
         {
             this.Cidade = cidade;
             this.Descricoes = descricoes;
@@ -38,6 +38,11 @@ namespace OpenWeather.Library.Model
             if (string.IsNullOrWhiteSpace(Cidade))
             {
                 throw new OpenWeatherException("A cidade informada não é válida");
+            }
+
+            if (TemperatuaMinima > TemperatuaMaxima)
+            {
+                throw new OpenWeatherException("A temperatura mínima informada é maior que a temperatura máxima");
             }
         }
     }
