@@ -21,7 +21,7 @@ namespace OpenWeather.Library.Services
         {
             _openWeatherSetting = openWeatherSetting.Value;
             _clientFactory = clientFactory;
-            _client = _clientFactory.CreateClient(HttpClientName.OPEN_WEATHER_MAP);
+            _client = _clientFactory.CreateClient(HttpClientNameConstant.OPEN_WEATHER_MAP);
             _logger = logger;
         }
 

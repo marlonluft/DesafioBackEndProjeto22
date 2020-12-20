@@ -12,7 +12,7 @@ namespace OpenWeather.API.Util
         {
             var openWeatherSetting = configuration.GetSection("OpenWeather").Get<OpenWeatherSetting>();
 
-            services.AddHttpClient(HttpClientName.OPEN_WEATHER_MAP, c =>
+            services.AddHttpClient(HttpClientNameConstant.OPEN_WEATHER_MAP, c =>
             {
                 c.BaseAddress = new Uri(openWeatherSetting.BaseUrl);
             });
