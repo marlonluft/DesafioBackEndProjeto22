@@ -22,6 +22,7 @@ namespace OpenWeatherAPI
             services.AddControllers();
 
             services.ConfigurarTarefaSegundoPlano();
+            services.ConfigurarAppSettings(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
