@@ -1,10 +1,10 @@
-﻿using OpenWeather.Library.Model;
+﻿using OpenWeather.Library.DTO;
 using System.Threading.Tasks;
 
 namespace OpenWeather.Library.Services
 {
     public interface IOpenWeatherService
     {
-        Task<TemperaturaModel> ListarDadosMeteorologicosAtuais();
+        Task<OpenWeatherGroupDTO> ListarDadosMeteorologicosAtuais();
     }
 }
