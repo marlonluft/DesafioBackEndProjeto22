@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using OpenWeather.Library.Services;
+using OpenWeather.Library.Util;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,10 +12,14 @@ namespace OpenWeather.Job
     {
         private Timer _timer;
         private readonly IOpenWeatherService _openWeatherService;
+        private readonly ICache _cache;
+        private readonly ILogger<ImportarTemperaturaJob> _logger;
 
-        public ImportarTemperaturaJob(IOpenWeatherService openWeatherService)
+        public ImportarTemperaturaJob(IOpenWeatherService openWeatherService, ICache cache, ILogger<ImportarTemperaturaJob> logger)
         {
             _openWeatherService = openWeatherService;
+            _cache = cache;
+            _logger = logger;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
