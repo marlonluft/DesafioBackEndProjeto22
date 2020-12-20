@@ -34,6 +34,11 @@ namespace OpenWeather.Library.Model
             {
                 throw new OpenWeatherException("Nenhuma descrição válida informada");
             }
+
+            if (string.IsNullOrWhiteSpace(Cidade))
+            {
+                throw new OpenWeatherException("A cidade informada não é válida");
+            }
         }
     }
 }
