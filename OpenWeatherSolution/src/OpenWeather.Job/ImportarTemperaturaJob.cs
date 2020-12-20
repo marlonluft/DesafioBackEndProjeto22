@@ -1,8 +1,11 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OpenWeather.Library.Constants;
+using OpenWeather.Library.Model;
 using OpenWeather.Library.Services;
 using OpenWeather.Library.Util;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -43,6 +46,16 @@ namespace OpenWeather.Job
         private async void Executar()
         {
             var novosDadosTemperatura = await _openWeatherService.ListarDadosMeteorologicosAtuais();
+
+            if (novosDadosTemperatura != null)
+            {
+                if (!_cache.ConsultarCache(CacheConstant.LISTA_TEMPERATURA, out List<TemperaturaModel> listaTemperatura))
+                {
+                    listaTemperatura = new List<TemperaturaModel>();
+                }
+
+                _cache.GravarCache(CacheConstant.LISTA_TEMPERATURA, listaTemperatura, TimeSpan.FromHours(1));
+            }
         }
     }
 }
