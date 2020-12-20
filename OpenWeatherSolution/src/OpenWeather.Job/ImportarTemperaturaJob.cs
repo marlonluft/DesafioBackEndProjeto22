@@ -1,11 +1,13 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OpenWeather.Library.Constants;
+using OpenWeather.Library.Exceptions;
 using OpenWeather.Library.Model;
 using OpenWeather.Library.Services;
 using OpenWeather.Library.Util;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -53,6 +55,22 @@ namespace OpenWeather.Job
                 {
                     listaTemperatura = new List<TemperaturaModel>();
                 }
+
+                var listaTemperaturasAtualizadas = novosDadosTemperatura.List.Select(x => x.ToModel()).ToList();
+
+                listaTemperaturasAtualizadas.ForEach((temperatura) =>
+                {
+                    try
+                    {
+                        temperatura.Validar();
+                        listaTemperatura.Add(temperatura);
+                    }
+                    catch (Exception ex)
+                    {
+                        var msg = ex is OpenWeatherException ? ex.Message : "Exceção não esperada durante execução de job 'ImportarTemperaturaJob'";
+                        _logger.LogError(msg, ex);
+                    }
+                });
 
                 _cache.GravarCache(CacheConstant.LISTA_TEMPERATURA, listaTemperatura, TimeSpan.FromHours(1));
             }
