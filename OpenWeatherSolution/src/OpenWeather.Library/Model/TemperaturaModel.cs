@@ -15,6 +15,7 @@ namespace OpenWeather.Library.Model
             this.Temperatua = temperatua;
             this.TemperatuaMaxima = temperatuaMaxima;
             this.TemperatuaMinima = temperatuaMinima;
+            this.DataHora = DateTime.Now;
         }
 
         public CidadeEnum Cidade { get; private set; }
@@ -24,6 +25,7 @@ namespace OpenWeather.Library.Model
         public float Temperatua { get; private set; }
         public float TemperatuaMaxima { get; private set; }
         public float TemperatuaMinima { get; private set; }
+        public DateTime DataHora { get; set; }
 
         public void Validar()
         {
