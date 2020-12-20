@@ -50,7 +50,7 @@ namespace OpenWeather.Library.Model
                 throw new OpenWeatherException("A temperatura mínima informada é maior que a temperatura máxima");
             }
 
-            if (Temperatua < TemperatuaMinima )
+            if (Temperatua < TemperatuaMinima)
             {
                 throw new OpenWeatherException("A temperatura informada é menor que a temperatura mínima");
             }
