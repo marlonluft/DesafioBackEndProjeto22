@@ -1,4 +1,5 @@
 ﻿using OpenWeather.Library.Exceptions;
+using OpenWeather.Library.Util;
 using System;
 using System.Linq;
 
@@ -8,7 +9,7 @@ namespace OpenWeather.Library.Model
     {
         public TemperaturaModel(string cidade, string[] descricoes, float sensacaoTermica, int humidade, float temperatua, float temperatuaMinima, float temperatuaMaxima)
         {
-            this.Cidade = cidade;
+            PreencherCidade(cidade);
             this.Descricoes = descricoes;
             this.SensacaoTermica = sensacaoTermica;
             this.Humidade = humidade;
@@ -26,6 +27,12 @@ namespace OpenWeather.Library.Model
         public float TemperatuaMaxima { get; private set; }
         public float TemperatuaMinima { get; private set; }
         public DateTime DataHora { get; set; }
+
+        private void PreencherCidade(string cidade)
+        {
+            this.Cidade = string.IsNullOrWhiteSpace(cidade) ?
+                cidade : Helper.NormalizarString(cidade);
+        }
 
         public void Validar()
         {
