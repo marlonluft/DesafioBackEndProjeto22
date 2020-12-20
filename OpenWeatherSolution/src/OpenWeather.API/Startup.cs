@@ -62,6 +62,8 @@ namespace OpenWeatherAPI
 
             app.UseAuthorization();
 
+            app.RegistrarMiddleware();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
