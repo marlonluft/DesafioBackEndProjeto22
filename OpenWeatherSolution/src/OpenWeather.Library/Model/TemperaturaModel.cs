@@ -1,11 +1,12 @@
-﻿using OpenWeather.Library.Exceptions;
+﻿using OpenWeather.Library.Enumerador;
+using OpenWeather.Library.Exceptions;
 using System.Linq;
 
 namespace OpenWeather.Library.Model
 {
     public class TemperaturaModel
     {
-        public TemperaturaModel(string cidade, string[] descricoes, float sensacaoTermica, int humidade, float temperatua, float temperatuaMinima, float temperatuaMaxima)
+        public TemperaturaModel(CidadeEnum cidade, string[] descricoes, float sensacaoTermica, int humidade, float temperatua, float temperatuaMinima, float temperatuaMaxima)
         {
             this.Cidade = cidade;
             this.Descricoes = descricoes;
@@ -16,7 +17,7 @@ namespace OpenWeather.Library.Model
             this.TemperatuaMinima = temperatuaMinima;
         }
 
-        public string Cidade { get; private set; }
+        public CidadeEnum Cidade { get; private set; }
         public string[] Descricoes { get; private set; }
         public float SensacaoTermica { get; private set; }
         public int Humidade { get; private set; }
@@ -33,11 +34,6 @@ namespace OpenWeather.Library.Model
             else if (Descricoes.Any(x => string.IsNullOrWhiteSpace(x)))
             {
                 throw new OpenWeatherException("Nenhuma descrição válida informada");
-            }
-
-            if (string.IsNullOrWhiteSpace(Cidade))
-            {
-                throw new OpenWeatherException("A cidade informada não é válida");
             }
 
             if (TemperatuaMinima > TemperatuaMaxima)

@@ -1,4 +1,5 @@
-﻿using OpenWeather.Library.Model;
+﻿using OpenWeather.Library.Enumerador;
+using OpenWeather.Library.Model;
 using System.Linq;
 using System.Text.Json.Serialization;
 
@@ -48,8 +49,9 @@ namespace OpenWeather.Library.DTO
         public TemperaturaModel ToModel()
         {
             var descricoes = this.Weather?.Select(x => x.Description).ToArray();
+            var cidade = (CidadeEnum)this.Id;
 
-            return new TemperaturaModel(this.Name, descricoes, this.Main.Temp, this.Main.Humidity, this.Main.Temp, this.Main.TempMin, this.Main.TempMax);
+            return new TemperaturaModel(cidade, descricoes, this.Main.Temp, this.Main.Humidity, this.Main.Temp, this.Main.TempMin, this.Main.TempMax);
         }
     }
 

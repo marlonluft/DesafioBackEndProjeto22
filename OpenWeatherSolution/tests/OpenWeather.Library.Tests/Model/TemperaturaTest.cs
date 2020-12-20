@@ -48,17 +48,6 @@ namespace OpenWeather.Library.Tests.Model
             Assert.Throws<OpenWeatherException>(() => temperatura.Validar());
         }
 
-        [Fact(DisplayName = "Preencher Cidade vazia")]
-        [Trait("Model", "TemperaturaModel")]
-        public void PreencherCidadeVazia_DeveRetornarException()
-        {
-            // Arrange
-            var temperatura = new TemperaturaModel(string.Empty, _descricoes, 0, 0, 0, 0, 0);
-
-            // Act & Assert
-            Assert.Throws<OpenWeatherException>(() => temperatura.Validar());
-        }
-
         [Fact(DisplayName = "Preencher Temperatura mínima maior que temperatura máxima")]
         [Trait("Model", "TemperaturaModel")]
         public void PreencherTemperaturaMinimaMaiorQueTemperaturaMaxima_DeveRetornarException()
