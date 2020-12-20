@@ -20,6 +20,7 @@ namespace OpenWeatherAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMemoryCache();
 
             services.ConfigurarAppSettings(Configuration);
             services.ConfigurarHttpClient(Configuration);
