@@ -1,12 +1,12 @@
-﻿using OpenWeather.Library.Enumerador;
-using OpenWeather.Library.Exceptions;
+﻿using OpenWeather.Library.Exceptions;
+using System;
 using System.Linq;
 
 namespace OpenWeather.Library.Model
 {
     public class TemperaturaModel
     {
-        public TemperaturaModel(CidadeEnum cidade, string[] descricoes, float sensacaoTermica, int humidade, float temperatua, float temperatuaMinima, float temperatuaMaxima)
+        public TemperaturaModel(string cidade, string[] descricoes, float sensacaoTermica, int humidade, float temperatua, float temperatuaMinima, float temperatuaMaxima)
         {
             this.Cidade = cidade;
             this.Descricoes = descricoes;
@@ -18,7 +18,7 @@ namespace OpenWeather.Library.Model
             this.DataHora = DateTime.Now;
         }
 
-        public CidadeEnum Cidade { get; private set; }
+        public string Cidade { get; private set; }
         public string[] Descricoes { get; private set; }
         public float SensacaoTermica { get; private set; }
         public int Humidade { get; private set; }
