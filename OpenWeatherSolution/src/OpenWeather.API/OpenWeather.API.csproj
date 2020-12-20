@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OpenWeather.Job\OpenWeather.Job.csproj" />
+    <ProjectReference Include="..\OpenWeather.Library\OpenWeather.Library.csproj" />
   </ItemGroup>
 
 
