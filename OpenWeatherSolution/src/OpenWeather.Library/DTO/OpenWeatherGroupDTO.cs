@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using OpenWeather.Library.Model;
+using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace OpenWeather.Library.DTO
 {
@@ -42,6 +44,13 @@ namespace OpenWeather.Library.DTO
 
         [JsonPropertyName("name")]
         public string Name { get; set; }
+
+        public TemperaturaModel ToModel()
+        {
+            var descricoes = this.Weather?.Select(x => x.Description).ToArray();
+
+            return new TemperaturaModel(this.Name, descricoes, this.Main.Temp, this.Main.Humidity, this.Main.Temp, this.Main.TempMin, this.Main.TempMax);
+        }
     }
 
     public class OpenWeatherCloudsDTO
