@@ -1,4 +1,5 @@
-﻿using OpenWeather.Library.Exceptions;
+﻿using OpenWeather.Library.Enumerador;
+using OpenWeather.Library.Exceptions;
 using OpenWeather.Library.Model;
 using Xunit;
 
@@ -13,7 +14,7 @@ namespace OpenWeather.Library.Tests.Model
         public void PreencherDescrcaioNula_DeveRetornarException()
         {
             // Arrange
-            var temperatura = new TemperaturaModel("Cidade", null, 0, 0, 0, 0, 0);
+            var temperatura = new TemperaturaModel(CidadeEnum.FLORIANOPOLIS, null, 0, 0, 0, 0, 0);
 
             // Act & Assert
             Assert.Throws<OpenWeatherException>(() => temperatura.Validar());
@@ -26,7 +27,7 @@ namespace OpenWeather.Library.Tests.Model
             // Arrange
             var descricoes = new string[0];
 
-            var temperatura = new TemperaturaModel("Cidade", descricoes, 0, 0, 0, 0, 0);
+            var temperatura = new TemperaturaModel(CidadeEnum.FLORIANOPOLIS, descricoes, 0, 0, 0, 0, 0);
 
             // Act & Assert
             Assert.Throws<OpenWeatherException>(() => temperatura.Validar());
@@ -42,7 +43,7 @@ namespace OpenWeather.Library.Tests.Model
                 string.Empty
             };
 
-            var temperatura = new TemperaturaModel("Cidade", descricoes, 0, 0, 0, 0, 0);
+            var temperatura = new TemperaturaModel(CidadeEnum.FLORIANOPOLIS, descricoes, 0, 0, 0, 0, 0);
 
             // Act & Assert
             Assert.Throws<OpenWeatherException>(() => temperatura.Validar());
@@ -53,7 +54,7 @@ namespace OpenWeather.Library.Tests.Model
         public void PreencherTemperaturaMinimaMaiorQueTemperaturaMaxima_DeveRetornarException()
         {
             // Arrange
-            var temperatura = new TemperaturaModel("Cidade", _descricoes, 0, 0, 0, 30, 29);
+            var temperatura = new TemperaturaModel(CidadeEnum.FLORIANOPOLIS, _descricoes, 0, 0, 0, 30, 29);
 
             // Act & Assert
             Assert.Throws<OpenWeatherException>(() => temperatura.Validar());
@@ -64,7 +65,7 @@ namespace OpenWeather.Library.Tests.Model
         public void PreencherTemperaturaMenorQueTemperaturaMinima_DeveRetornarException()
         {
             // Arrange
-            var temperatura = new TemperaturaModel("Cidade", _descricoes, 0, 0, 5, 10, 30);
+            var temperatura = new TemperaturaModel(CidadeEnum.FLORIANOPOLIS, _descricoes, 0, 0, 5, 10, 30);
 
             // Act & Assert
             Assert.Throws<OpenWeatherException>(() => temperatura.Validar());
@@ -75,7 +76,7 @@ namespace OpenWeather.Library.Tests.Model
         public void PreencherTemperaturaMaiorQueTemperaturaMaxima_DeveRetornarException()
         {
             // Arrange
-            var temperatura = new TemperaturaModel("Cidade", _descricoes, 0, 0, 35, 10, 30);
+            var temperatura = new TemperaturaModel(CidadeEnum.FLORIANOPOLIS, _descricoes, 0, 0, 35, 10, 30);
 
             // Act & Assert
             Assert.Throws<OpenWeatherException>(() => temperatura.Validar());
