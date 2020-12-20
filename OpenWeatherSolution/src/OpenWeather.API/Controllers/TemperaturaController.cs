@@ -29,7 +29,7 @@ namespace OpenWeatherAPI.Controllers
         /// <response code="200">Histórico de temperaturas das cidade/periodo informados</response>
         /// <response code="400">Dado de consulta inválido</response>
         /// <response code="500">Falha interna, favor tentar novamente mais tarde</response>
-        [HttpGet]
+        [HttpGet("{cidade}")]
         [ProducesResponseType(typeof(List<TemperaturaViewModel>), 200)]
         [ProducesResponseType(typeof(string), 400)]
         [ProducesResponseType(500)]
