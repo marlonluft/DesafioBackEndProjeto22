@@ -23,6 +23,9 @@ namespace OpenWeather.API.ViewModel
         /// <summary>
         /// Nome da cidade
         /// </summary>
+        /// <example>São Paulo</example>
+        /// <example>Florianópolis</example>
+        /// <example>Rio De Janeiro</example>
         public string Cidade { get; private set; }
 
         /// <summary>
