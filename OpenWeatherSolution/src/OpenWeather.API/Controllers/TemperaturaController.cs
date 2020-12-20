@@ -35,7 +35,14 @@ namespace OpenWeatherAPI.Controllers
         [ProducesResponseType(500)]
         public IActionResult Get(string cidade, DateTime dataInicio, DateTime dataFim)
         {
-
+            if (string.IsNullOrWhiteSpace(cidade))
+            {
+                return BadRequest("A cidade deve ser informada para a consulta");
+            }
+            else if (dataInicio > dataFim)
+            {
+                return BadRequest("A data de inicio da pesquisa é maior que a data de fim");
+            }
 
             return Ok();
         }
