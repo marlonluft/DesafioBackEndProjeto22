@@ -14,7 +14,7 @@ namespace OpenWeather.API.Util
 
             // Service
             services.AddSingleton<IOpenWeatherService, OpenWeatherService>();
-            services.AddScoped<ITemperaturaService, TemperaturaService>();
+            services.AddSingleton<ITemperaturaService, TemperaturaService>();
             services.AddSingleton<ITemperaturaRepository, TemperaturaRepository>();
         }
     }
