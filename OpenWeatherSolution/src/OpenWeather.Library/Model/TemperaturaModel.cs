@@ -65,5 +65,37 @@ namespace OpenWeather.Library.Model
                 throw new OpenWeatherException("A temperatura informada é maior que a temperatura máxima");
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            var valido = false;
+
+            if (obj is TemperaturaModel)
+            {
+                var objComparar = obj as TemperaturaModel;
+
+                valido = this.Cidade == objComparar.Cidade &&
+                    this.DataHora == objComparar.DataHora &&
+                    this.Humidade == objComparar.Humidade &&
+                    this.SensacaoTermica == objComparar.SensacaoTermica &&
+                    this.Temperatua == objComparar.Temperatua &&
+                    this.TemperatuaMaxima == objComparar.TemperatuaMaxima &&
+                    this.TemperatuaMinima == objComparar.TemperatuaMinima;
+
+                if (this.Descricoes?.Length == objComparar.Descricoes?.Length)
+                {
+                    for (int i = 0; i < this.Descricoes?.Length; i++)
+                    {
+                        if (this.Descricoes[i] != objComparar.Descricoes[i])
+                        {
+                            valido = false;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return valido;
+        }
     }
 }
