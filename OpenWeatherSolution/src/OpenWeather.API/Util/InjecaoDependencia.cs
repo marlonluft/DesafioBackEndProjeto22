@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using OpenWeather.Library.Repository;
 using OpenWeather.Library.Services;
 using OpenWeather.Library.Util;
 
@@ -14,6 +15,7 @@ namespace OpenWeather.API.Util
             // Service
             services.AddSingleton<IOpenWeatherService, OpenWeatherService>();
             services.AddScoped<ITemperaturaService, TemperaturaService>();
+            services.AddSingleton<ITemperaturaRepository, TemperaturaRepository>();
         }
     }
 }
