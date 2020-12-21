@@ -36,6 +36,11 @@ namespace OpenWeather.Library.Model
 
         public void Validar()
         {
+            if (string.IsNullOrWhiteSpace(Cidade))
+            {
+                throw new OpenWeatherException("A cidade informada não é válida");
+            }
+
             if (Descricoes == null || Descricoes.Length == 0)
             {
                 throw new OpenWeatherException("Nenhuma descrição informada");
