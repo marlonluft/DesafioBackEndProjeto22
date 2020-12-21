@@ -1,12 +1,8 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using OpenWeather.Library.Constants;
 using OpenWeather.Library.Exceptions;
-using OpenWeather.Library.Model;
 using OpenWeather.Library.Services;
-using OpenWeather.Library.Util;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,14 +13,14 @@ namespace OpenWeather.Job
     {
         private Timer _timer;
         private readonly IOpenWeatherService _openWeatherService;
-        private readonly ICache _cache;
         private readonly ILogger<ImportarTemperaturaJob> _logger;
+        private readonly ITemperaturaService _temperaturaService;
 
-        public ImportarTemperaturaJob(IOpenWeatherService openWeatherService, ICache cache, ILogger<ImportarTemperaturaJob> logger)
+        public ImportarTemperaturaJob(IOpenWeatherService openWeatherService, ILogger<ImportarTemperaturaJob> logger, ITemperaturaService temperaturaService)
         {
             _openWeatherService = openWeatherService;
-            _cache = cache;
             _logger = logger;
+            _temperaturaService = temperaturaService;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
@@ -51,19 +47,13 @@ namespace OpenWeather.Job
 
             if (novosDadosTemperatura != null)
             {
-                if (!_cache.ConsultarCache(CacheConstant.LISTA_TEMPERATURA, out List<TemperaturaModel> listaTemperatura))
-                {
-                    listaTemperatura = new List<TemperaturaModel>();
-                }
-
                 var listaTemperaturasAtualizadas = novosDadosTemperatura.List.Select(x => x.ToModel()).ToList();
 
                 listaTemperaturasAtualizadas.ForEach((temperatura) =>
                 {
                     try
                     {
-                        temperatura.Validar();
-                        listaTemperatura.Add(temperatura);
+                        _temperaturaService.Gravar(temperatura);
                     }
                     catch (Exception ex)
                     {
@@ -71,8 +61,6 @@ namespace OpenWeather.Job
                         _logger.LogError(msg, ex);
                     }
                 });
-
-                _cache.GravarCache(CacheConstant.LISTA_TEMPERATURA, listaTemperatura, TimeSpan.FromHours(1));
             }
         }
     }
