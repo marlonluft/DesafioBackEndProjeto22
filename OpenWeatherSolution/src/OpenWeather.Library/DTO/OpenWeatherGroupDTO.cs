@@ -49,7 +49,7 @@ namespace OpenWeather.Library.DTO
         {
             var descricoes = this.Weather?.Select(x => x.Description).ToArray();
 
-            return new TemperaturaModel(this.Name, descricoes, this.Main.Temp, this.Main.Humidity, this.Main.Temp, this.Main.TempMin, this.Main.TempMax);
+            return new TemperaturaModel(this.Name, descricoes, this.Main.FeelsLike, this.Main.Humidity, this.Main.Temp, this.Main.TempMin, this.Main.TempMax);
         }
     }
 
