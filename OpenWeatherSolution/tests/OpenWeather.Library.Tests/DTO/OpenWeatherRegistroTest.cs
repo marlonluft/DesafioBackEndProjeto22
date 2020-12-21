@@ -1,9 +1,6 @@
 ﻿using OpenWeather.Library.DTO;
 using OpenWeather.Library.Model;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace OpenWeather.Library.Tests.DTO
