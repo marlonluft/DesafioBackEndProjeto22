@@ -24,7 +24,7 @@ namespace OpenWeather.Library.Util
 
         private static string RemoverAcentos(string texto)
         {
-            Encoding destEncoding = Encoding.GetEncoding("iso-8859-8");
+            var destEncoding = Encoding.GetEncoding("iso-8859-8");
 
             return destEncoding.GetString(
               Encoding.Convert(Encoding.UTF8, destEncoding, Encoding.UTF8.GetBytes(texto)));
