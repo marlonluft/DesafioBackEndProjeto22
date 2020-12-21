@@ -35,7 +35,7 @@ namespace OpenWeatherAPI.Controllers
         /// <response code="400">Dado de consulta inválido</response>
         /// <response code="500">Falha interna, favor tentar novamente mais tarde</response>
         [HttpGet()]
-        [ProducesResponseType(typeof(List<TemperaturaViewModel>), 200)]
+        [ProducesResponseType(typeof(List<TemperaturaCidadeViewModel>), 200)]
         [ProducesResponseType(typeof(string), 400)]
         [ProducesResponseType(500)]
         public IActionResult Get(string cidades, DateTime dataInicio, DateTime dataFim)
@@ -58,7 +58,12 @@ namespace OpenWeatherAPI.Controllers
 
             var listaTemperatura = _temperaturaService.Listar(cidadesArray, dataInicio, dataFim);
 
-            return Ok(listaTemperatura);
+            var agrupamentoPorCidade = listaTemperatura
+                .GroupBy(x => x.Cidade)
+                .Select(x => new TemperaturaCidadeViewModel(x.Key, x.ToList()))
+                .ToList();
+
+            return Ok(agrupamentoPorCidade);
         }
     }
 }

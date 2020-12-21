@@ -11,7 +11,6 @@ namespace OpenWeather.API.ViewModel
     {   
         public TemperaturaViewModel(TemperaturaModel model)
         {
-            Cidade = model.Cidade;
             Descricoes = model.Descricoes;
             SensacaoTermica = model.SensacaoTermica;
             Humidade = model.Humidade;
@@ -19,14 +18,6 @@ namespace OpenWeather.API.ViewModel
             TemperatuaMaxima = model.TemperatuaMaxima;
             TemperatuaMinima = model.TemperatuaMinima;
         }
-
-        /// <summary>
-        /// Nome da cidade
-        /// </summary>
-        /// <example>São Paulo</example>
-        /// <example>Florianópolis</example>
-        /// <example>Rio De Janeiro</example>
-        public string Cidade { get; private set; }
 
         /// <summary>
         /// Descrições do tempo no local
