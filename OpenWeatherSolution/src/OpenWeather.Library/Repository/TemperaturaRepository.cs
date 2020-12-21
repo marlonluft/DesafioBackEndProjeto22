@@ -35,13 +35,14 @@ namespace OpenWeather.Library.Repository
             return listaTemperatura;
         }
 
-        public List<TemperaturaModel> Listar(string cidade, DateTime dataInicio, DateTime dataFim)
+        public List<TemperaturaModel> Listar(string[] cidades, DateTime dataInicio, DateTime dataFim)
         {
             var listaTemperatura = ListarTodos()
                 .Where(x =>
                     x.DataHora >= dataInicio &&
                     x.DataHora <= dataFim &&
-                    Helper.CompararIgnorandoAcentos(x.Cidade, cidade))
+                    cidades.Any(cidade => Helper.CompararIgnorandoAcentos(x.Cidade, cidade))
+                )
                 .ToList();
 
             return listaTemperatura;

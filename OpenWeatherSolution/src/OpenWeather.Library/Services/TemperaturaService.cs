@@ -29,9 +29,9 @@ namespace OpenWeather.Library.Services
             _temperaturaRepository.Gravar(model);
         }
 
-        public List<TemperaturaModel> Listar(string cidade, DateTime dataInicio, DateTime dataFim)
+        public List<TemperaturaModel> Listar(string[] cidades, DateTime dataInicio, DateTime dataFim)
         {
-            return _temperaturaRepository.Listar(cidade, dataInicio, dataFim);
+            return _temperaturaRepository.Listar(cidades, dataInicio, dataFim);
         }
     }
 }
