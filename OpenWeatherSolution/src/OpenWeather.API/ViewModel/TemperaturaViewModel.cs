@@ -17,6 +17,7 @@ namespace OpenWeather.API.ViewModel
             Temperatua = model.Temperatua;
             TemperatuaMaxima = model.TemperatuaMaxima;
             TemperatuaMinima = model.TemperatuaMinima;
+            DataHora = model.DataHora;
         }
 
         /// <summary>
