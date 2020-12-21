@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using OpenWeather.API.Util;
 using System.IO;
+using System.Text;
 
 namespace OpenWeatherAPI
 {
@@ -16,6 +17,8 @@ namespace OpenWeatherAPI
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         }
 
         public IConfiguration Configuration { get; }
